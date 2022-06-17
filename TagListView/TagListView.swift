@@ -205,6 +205,14 @@ open class TagListView: UIView {
         }
     }
     
+    @IBInspectable open dynamic var EqualWidth: CGFloat = 10.0 {
+        didSet {
+            tagViews.forEach {
+                $0.paddingX = $0.paddingX + (EqualWidth - $0.frame.size.width) * 0.5
+            }
+        }
+    }
+    
     @IBOutlet open weak var delegate: TagListViewDelegate?
     
     open private(set) var tagViews: [TagView] = []
